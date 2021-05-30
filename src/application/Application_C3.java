@@ -79,6 +79,7 @@ public final class Application_C3 {
         o5678.addItem(oi03).addItem(oi04).addItem(oi05);
 
         List<Order> orders = new ArrayList<Order>(List.of( o5234, o8592, o3563, o6135, o1234, o5678 ));
+        outputProcessor.printOrders( orders, true );
         outputProcessor.printOrders( orders, false );
     }
   }

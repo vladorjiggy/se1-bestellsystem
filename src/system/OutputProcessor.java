@@ -29,7 +29,7 @@ final class OutputProcessor implements Components.OutputProcessor{
         
         StringBuffer sbAllOrders = new StringBuffer( "-------------" );
 		StringBuffer sbLineItem = new StringBuffer();
-        
+        long totalVat = 0L;
 		int totalPrice = 0;
         for (int i = 0; i < orders.size(); i++) {			
             Order order = orders.get(i);
@@ -42,9 +42,11 @@ final class OutputProcessor implements Components.OutputProcessor{
 			for(OrderItem item : orderItems){
 				Article art = item.getArticle();
 				orderPrice+= (art.getUnitPrice() * item.getUnitsOrdered());
+				totalVat += orderProcessor.vat((art.getUnitPrice() * item.getUnitsOrdered()), 1);;
 				totalPrice+= (art.getUnitPrice() * item.getUnitsOrdered());
 				items.add(item.getUnitsOrdered() + "x " + item.getDescription());				
 			}
+			
 			String orderPriseString = fmtPrice( orderPrice, "EUR", 14 );
 			String listString = String.join(", ", items);
             String desc = "#" + orderId + ", " + customerName + "'s Bestellung: " + listString ;
@@ -52,12 +54,21 @@ final class OutputProcessor implements Components.OutputProcessor{
 			sbAllOrders.append( "\n" );
 			sbAllOrders.append( sbLineItem );            
         }
+		
 		System.out.println(totalPrice);
 		String fmtPriceTotal = pad( fmtPrice( totalPrice, "EUR" ), 14, true );
         sbAllOrders.append( "\n" )
 			.append( fmtLine( "-------------", "------------- -------------", printLineWidth ) )
 			.append( "\n" )
 			.append( fmtLine( "Gesamtwert aller Bestellungen:", fmtPriceTotal, printLineWidth ) );
+
+		String fmtVatTotal = pad( fmtPrice( totalVat, "EUR" ), 14, true );
+		if(printVAT){
+			sbAllOrders.append( "\n" )
+			.append( fmtLine( "Im Gesamtbetrag enthaltene MWST (19%):", fmtVatTotal, printLineWidth ) );
+		}
+		
+		// Hier MWST
 
 		// print sbAllOrders StringBuffer with all output to System.out
 		System.out.println( sbAllOrders.toString() );
