@@ -9,5 +9,10 @@
         "c:\\Users\\vladi\\Desktop\\Workspaces\\Uni-Workspace\\SE1\\javafx-sdk-11.0.2\\lib\\javafx.swing.jar",
         "c:\\Users\\vladi\\Desktop\\Workspaces\\Uni-Workspace\\SE1\\javafx-sdk-11.0.2\\lib\\javafx.web.jar",
         "c:\\Users\\vladi\\Desktop\\Workspaces\\Uni-Workspace\\SE1\\javafx-sdk-11.0.2\\lib\\javafx-swt.jar"
-    ]
+    ],
+    "java.project.sourcePaths": [
+        "src",
+        "test"
+    ],
+    "java.project.outputPath": "target\\main"
 }

@@ -16,7 +16,13 @@ public class Order {
 
     protected Order(long id, Date date, Customer customer){
         this.id = id;
-        this.date = date;
+        if (date == null){
+            this.date = new Date();
+        }
+        else{
+            this.date = date;
+        }
+        
         this.customer = customer;
     }
 
@@ -45,7 +51,9 @@ public class Order {
     }
 
     public Order addItem(OrderItem item){
-        this.items.add(item);
+        if (!this.items.contains(item) && item != null){
+            this.items.add(item);
+        }        
         return this;
     }
 

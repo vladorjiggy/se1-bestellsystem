@@ -9,6 +9,13 @@
             "name": "Launch Application_C3",
             "request": "launch",
             "mainClass": "application.Application_C3",
+            "projectName": "se1-bestellsystem_af93193b"
+        },
+        {
+            "type": "java",
+            "name": "Launch Application_C3",
+            "request": "launch",
+            "mainClass": "application.Application_C3",
             "projectName": "se1bestellsystem_a0c99018"
         },
         {

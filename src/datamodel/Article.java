@@ -8,9 +8,25 @@ public class Article {
 
     protected Article(String id, String description, long unitPrice, int unitsInStore){
         this.id = id;
-        this.description = description;
-        this.unitPrice = unitPrice;
-        this.unitsInStore = unitsInStore;
+        if(description == null){
+            this.description = "";
+        }
+        else{
+            this.description = description;
+        }
+        if(unitsInStore < 0 || unitsInStore == Long.MAX_VALUE){
+            this.unitsInStore = 0;
+        }
+        else{
+            this.unitsInStore = unitsInStore;
+        }
+        if(unitPrice < 0 || unitPrice == Long.MAX_VALUE){
+            this.unitPrice = 0;
+        }
+        else{
+            this.unitPrice = unitPrice;
+        }
+        
     }
 
     /**
@@ -38,15 +54,33 @@ public class Article {
      */
 
     public void setDescription(String description){
-        this.description = description;
+        if(description == null){
+            this.description = "";
+        }
+        else{
+            this.description = description;
+        }
     }
 
     public void setUnitPrice(long unitPrice){
-        this.unitPrice = unitPrice;
+        if(unitPrice < 0 || unitPrice == Long.MAX_VALUE){
+            this.unitPrice = 0;
+        }
+        else{
+            this.unitPrice = unitPrice;
+        }
+        
     }
 
     public void setUnitsInStore(int unitsInStore){
-        this.unitsInStore = unitsInStore;
+        if(unitsInStore < 0 || unitsInStore == Integer.MAX_VALUE){
+            this.unitsInStore = 0;
+        }
+        else{
+            this.unitsInStore = unitsInStore;
+        }
+
+        
     }
 
 }

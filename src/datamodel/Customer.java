@@ -22,14 +22,23 @@ public class Customer {
     }
 
     public String getFirstName(){
+        if(this.firstName == null){
+            return "";
+        }
         return this.firstName;
     }
 
     public String getLastName(){
+        if(this.lastName == null){
+            return "";
+        }
         return this.lastName;
     }
 
     public String getContact(){
+        if(this.contact == null){
+            return "";
+        }
         return this.contact;
     }
 

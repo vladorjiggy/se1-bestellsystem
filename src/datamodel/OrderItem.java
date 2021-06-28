@@ -6,9 +6,20 @@ public class OrderItem {
     int unitsOrdered;
 
     protected OrderItem(String description, Article article, int unitsOrdered){
-        this.description = description;
+        
+        if(description == null){
+            this.description = "";
+        }
+        else{
+            this.description = description;
+        }
         this.article = article;
-        this.unitsOrdered = unitsOrdered;
+        if(unitsOrdered < 0){
+            this.unitsOrdered = 0;
+        }
+        else{
+            this.unitsOrdered = unitsOrdered;
+        }
     }
 
     /**
@@ -32,10 +43,21 @@ public class OrderItem {
      */
 
     public void setDescription(String description){
-        this.description = description;
+
+        if(description == null){
+            this.description = "";
+        }
+        else{
+            this.description = description;
+        }
     }
 
     public void setUnitsOrdered(int unitsOrdered){
-        this.unitsOrdered = unitsOrdered;
+        if(unitsOrdered < 0){
+            this.unitsOrdered = 0;
+        }
+        else{
+            this.unitsOrdered = unitsOrdered;
+        }
     }
 }
